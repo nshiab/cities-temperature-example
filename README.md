@@ -5,13 +5,19 @@ The data used in this repo comes from the
 
 It consists of 210 csv files with historical daily temperatures. Each file contains the data for one American city. For some dates, data is missing. In total, it's around 10 million rows of data.
 
-There are three scripts that output files in the "./output/" directory.
+There are three scripts that output files in the [./output/](https://github.com/nshiab/cities-temperature-example/tree/main/output) directory.
 
-- cleaning.js: this script creates files to be used in this [Observable notebook](https://observablehq.com/@nshiab/climate-change-in-us-cities-example), for teaching purposes. For a few hand-picked cities, csv files are generated in "./output/cities-for-observable/". The name of the cities is in a different file called cities-info.csv, in the same folder.
+- `cleaning.js`: this script creates files to be used in this [Observable notebook](https://observablehq.com/@nshiab/climate-change-in-us-cities-example), for teaching purposes. For a few hand-picked cities, csv files are generated in [./output/cities-for-observable/](https://github.com/nshiab/cities-temperature-example/tree/main/output/cities-for-observable). The name of the cities is in a different file called cities-info.csv, in the same folder.
 
-- charts-year.js: this script loads the cities' csv files one by one. It cleans and restructures the data before creating a chart for the city. The output is one chart saved as an html file for each city in "./output/charts-years/". You can check them out by opening them in your browser. Here's New York, for example.
+![A list of csv files.](./_media/cities-for-observable.png)
 
-- charts-decade.js: this script opens all of the csv files and loads all of the data once. It cleans and restructures the data. It also filters out cities without enough data points. Finally, it creates small multiple charts with cities ordered from the strongest temperature trend to the lowest. The output is one html file, with multiple charts in it. It's named chart-all-cities-decades.html and you can open it in your browser as well.
+- `charts-year.js`: this script loads the cities' csv files one by one. It cleans and restructures the data before creating a chart for the city. The output is one chart saved as an html file for each city in [./output/charts-years/](https://github.com/nshiab/cities-temperature-example/tree/main/output/charts-years). You can check preview them by prepending their url with https://htmlpreview.github.io/?. For example, here's the link for the [New York html chart](https://github.com/nshiab/cities-temperature-example/blob/main/output/charts-years/NewYork.html) and here's the [prepended link to preview it](https://htmlpreview.github.io/?https://github.com/nshiab/cities-temperature-example/blob/main/output/charts-years/NewYork.html). You can also download the files and open them in your browser, of course.
+
+![A chart shows the average temperature per year in New York.](./_media/new-york.png)
+
+- `charts-decade.js`: this script opens all of the csv files and loads all of the data once. It cleans and restructures the data. It also filters out cities without enough data points. Finally, it creates small multiple charts with cities ordered from the strongest temperature trend to the lowest. The output is one [html file](https://github.com/nshiab/cities-temperature-example/blob/main/output/chart-all-cities-decades.html), with multiple charts in it. You can [preview it here](https://htmlpreview.github.io/?https://github.com/nshiab/cities-temperature-example/blob/main/output/chart-all-cities-decades.html) or save and open it in your browser.
+
+![A small mutiples chart of average temperature per decade in US cities.](./_media/all-cities.png)
 
 Usually, we don't push the output of the code on GitHub, but since this repository is for teaching purposes, I want you to be able to see the result, even if you might not run the code.
 
@@ -27,9 +33,9 @@ Now, you need to download the data. Open [this link](https://kilthub.cmu.edu/art
 
 Your file structure should look like this (with the csv files in "csv").
 
-![A Visual Studio Code window shows multiple files and folders.](./file-structure.png)
+![A Visual Studio Code window shows multiple files and folders.](./_media/file-structure.png)
 
-Then, in the terminal, type "node cleaning.js" or "node charts-years.js" or "node chart-decades.js" to run the script of your choice.
+Then, in the terminal, type `node cleaning.js`, `node charts-years.js` or `node chart-decades.js` to run the script of your choice.
 
 You should see your computer happily crunching data and logging things in the console!
 
