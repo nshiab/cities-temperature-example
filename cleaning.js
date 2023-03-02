@@ -28,12 +28,18 @@ const sdInfo = new SimpleDataNode({ verbose: true })
   .addRank({ newKey: "id" })
   .formatAllKeys();
 
-const ids = sdInfo.getArray({ key: "oldId" });
+const citiesIds = sdInfo
+  .clone()
+  .selectKeys({ keys: ["id", "oldId"] })
+  .getData();
 
 // Individual files
-for (const id of ids) {
+for (const cityIds of citiesIds) {
   new SimpleDataNode({ verbose: true })
-    .loadDataFromLocalFile({ path: `./data/csv/${id}.csv`, fileNameAsId: true })
+    .loadDataFromLocalFile({
+      path: `./data/csv/${cityIds.oldId}.csv`,
+      fileNameAsId: true,
+    })
     .filterValues({ key: "tmax", valueComparator: (tmax) => tmax !== "NA" })
     .modifyValues({
       key: "id",
@@ -47,7 +53,7 @@ for (const id of ids) {
     })
     .removeKey({ key: "oldId" })
     .selectKeys({ keys: ["id", "date", "tmax"] })
-    .saveData({ path: `./output/cities-for-observable/${id}.csv` });
+    .saveData({ path: `./output/cities-for-observable/${cityIds.id}.csv` });
 }
 
 sdInfo
