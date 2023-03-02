@@ -40,7 +40,6 @@ for (const cityIds of citiesIds) {
       path: `./data/csv/${cityIds.oldId}.csv`,
       fileNameAsId: true,
     })
-    .filterValues({ key: "tmax", valueComparator: (tmax) => tmax !== "NA" })
     .modifyValues({
       key: "id",
       valueGenerator: (val) => val.split(".")[0],
